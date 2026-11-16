@@ -1,291 +1,474 @@
-/* Declaring variables */
+/* ==========================================================================
+   Global Variables & Design Tokens (:root)
+   ========================================================================== */
 :root {
-  /* ==========================================
-     1. Paleta de 5 colores
-     ========================================== */
-  --color-primary: #2563eb;       /* Azul principal */
-  --color-secondary: #6668d8;     /* Verde azulado secundario */
-  --color-accent: #67b13c;        /* Ámbar para llamadas a la acción */
-  --color-dark: #0b192f;          /* Texto principal / fondo oscuro */
-  --color-light: #f8fafc;         /* Fondos claros / tarjetas */
+  /* ------------------------------------------------------------------------
+     1. Color Palette (5 Main Colors)
+     ------------------------------------------------------------------------ */
+  /* Primary brand blue used for main actions and links */
+  --color-primary: #2563eb;
+  /* Secondary slate-purple used for accents and gradients */
+  --color-secondary: #6668d8;
+  /* Accent green used for highlights and buttons */
+  --color-accent: #67b13c;
+  /* Deep navy tone used for main text and dark backgrounds */
+  --color-dark: #0b192f;
+  /* Off-white tone used for light backgrounds and cards */
+  --color-light: #f8fafc;
+  /* Brand dark color alias for Rueda Libre dark tone */
   --rl-dark: #0b192f;
 
-  /* ==========================================
-     2. Familias tipográficas con fuentes de respaldo (fallbacks)
-     ========================================== */
-  /* Tipografía para encabezados/títulos (igual a prototipo.html) */
+  /* ------------------------------------------------------------------------
+     2. Typography Families & System Fallbacks
+     ------------------------------------------------------------------------ */
+  /* Heading font stack using Montserrat with native system fallbacks */
   --font-heading: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  
-  /* Tipografía para cuerpo de texto y especificaciones (igual a prototipo.html) */
+  /* Body font stack using Open Sans for optimal readability */
   --font-body: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* ==========================================
-     3. Escala de espaciado en rem (al menos 3 tamaños)
-     Base: 1rem = 16px por defecto en la mayoría de navegadores
-     ========================================== */
-  --space-sm: 0.5rem;   /*  8px - Espaciados mínimos o padding interno */
-  --space-md: 1rem;     /* 16px - Separación base entre elementos */
-  --space-lg: 1.5rem;   /* 24px - Márgenes de sección medianos */
-  --space-xl: 2.5rem;   /* 40px - Separación amplia entre bloques */
+  /* ------------------------------------------------------------------------
+     3. Spacing Scale (rem based, 1rem = 16px default)
+     ------------------------------------------------------------------------ */
+  /* Small spacing (8px) for compact padding and micro gaps */
+  --space-sm: 0.5rem;
+  /* Medium spacing (16px) for standard margins and element separation */
+  --space-md: 1rem;
+  /* Large spacing (24px) for medium section spacing */
+  --space-lg: 1.5rem;
+  /* Extra-large spacing (40px) for generous separation between sections */
+  --space-xl: 2.5rem;
 }
 
-/* ==========================================
-   Base Styles (Inheritance & Typography)
-   ========================================== */
+/* ==========================================================================
+   Base Styles (Inheritance & Global Reset)
+   ========================================================================== */
+/* Universal selector to apply border-box model across all elements */
 * {
+  /* Include padding and border in total width and height calculations */
   box-sizing: border-box;
 }
 
+/* Base styles for document body */
 body {
+  /* Set default font family for all page text */
   font-family: var(--font-body);
+  /* Set standard text color across the page */
   color: var(--color-dark);
 }
 
+/* Global typography rule for all headings (H1 to H6) */
 h1, h2, h3, h4, h5, h6 {
+  /* Apply the Montserrat heading font family */
   font-family: var(--font-heading);
 }
 
-/* -------------------------------------------------------------------------------- */
-/* Index.html */
-/* 1. Header Shell: Give it depth or a local vibe */
+/* ==========================================================================
+   Index Page: Hero Section
+   ========================================================================== */
+/* Hero section banner styling */
 .hero-section {
+  /* Diagonal gradient background transitioning from blue to warm tan */
   background: linear-gradient(135deg, #093393 0%, #b68965 100%);
+  /* Very subtle transparent border line at the bottom */
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  /* Set relative positioning for absolute child elements */
   position: relative;
+  /* Guarantee the hero occupies at least 70% of viewport height */
   min-height: 70vh;
+  /* Enable flexbox layout */
   display: flex;
+  /* Center child elements vertically within the hero */
   align-items: center;
+  /* Add vertical padding (5rem top/bottom, 0 left/right) */
   padding: 5rem 0;
-
 }
 
-/* 2. Typography Hierarchy */
+/* Main hero title heading */
 .hero-title {
+  /* Apply the heading font family */
   font-family: var(--font-heading);
+  /* Heavy extra-bold weight for strong impact */
   font-weight: 800;
-  font-size: clamp(2.25rem, 5vw, 3.6rem); /* Scales fluidly with screen size */
+  /* Fluid font size scaling between 2.25rem and 3.6rem based on screen width */
+  font-size: clamp(2.25rem, 5vw, 3.6rem);
+  /* Compact line height tailored for large display titles */
   line-height: 1.15;
+  /* Dark text color with fallback */
   color: var(--rl-dark, #0b192f);
+  /* Space below the title before the subtitle */
   margin-bottom: 1rem;
 }
 
+/* Hero supporting description text */
 .hero-description {
+  /* Slightly larger font size for intro text */
   font-size: 1.25rem;
+  /* Comfortable line height for paragraph reading */
   line-height: 1.4;
+  /* Semi-transparent white (90% opacity) for high contrast on gradient */
   color: rgba(255, 255, 255, 0.9);
-  max-width: 60ch; /* Keeps line length comfortable for reading */
+  /* Limit line length to 60 characters for comfortable reading */
+  max-width: 60ch;
 }
 
-/* 3. Interactive Call to Action */
+/* Hero Call-To-Action (CTA) button */
 .hero-cta {
+  /* Allow margins/padding while remaining inline with adjacent flow */
   display: inline-block;
+  /* Separation space above the button */
   margin-top: 2rem;
+  /* Internal button padding (top/bottom: 0.75rem, left/right: 1.75rem) */
   padding: 0.75rem 1.75rem;
+  /* Clean white button background */
   background-color: #ffffff;
+  /* Dark navy text color fallback */
   color: #0b192f;
+  /* Bold font weight */
   font-weight: 700;
+  /* Remove default link underline */
   text-decoration: none;
+  /* Pill-shaped rounded borders */
   border-radius: 50px;
+  /* Primary blue text color */
   color: var(--color-primary);
+  /* Transparent border to preserve spacing when hovering */
   border-bottom: 2px solid transparent;
+  /* Soft drop shadow for elevation */
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  /* Smooth animation transition on property changes */
   transition: all 0.25s ease;
 }
 
+/* Hero CTA button hover state */
 .hero-cta:hover {
+  /* Lift button 2px upwards on hover */
   transform: translateY(-2px);
+  /* Stronger drop shadow on hover for deeper depth */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  /* Change text color to dark navy on hover */
   color: #0b192f;
 }
 
-/* WhatsApp Floating Button */
+/* ==========================================================================
+   Floating WhatsApp Button
+   ========================================================================== */
+/* Floating contact button fixed on the screen */
 .whatsapp-btn {
+  /* Fix position relative to the browser window */
   position: fixed;
+  /* 20px distance from the bottom edge of the screen */
   bottom: 20px;
+  /* 20px distance from the right edge of the screen */
   right: 20px;
+  /* Official WhatsApp green brand color */
   background-color: #25D366;
+  /* White icon color */
   color: #ffffff;
+  /* 50% border radius to make the button a perfect circle */
   border-radius: 50%;
+  /* Fixed button width of 60px */
   width: 60px;
+  /* Fixed button height of 60px */
   height: 60px;
+  /* Center text alignment horizontally */
   text-align: center;
+  /* Size of the WhatsApp icon */
   font-size: 30px;
+  /* Flexbox display to center the icon inside */
   display: flex;
+  /* Vertically center the icon inside the circular button */
   align-items: center;
+  /* Horizontally center the icon inside the circular button */
   justify-content: center;
+  /* Subtle drop shadow for floating elevation */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 1000; 
+  /* High z-index to stay above all other page content */
+  z-index: 1000;
+  /* Remove default link underline */
   text-decoration: none;
+  /* Smooth transitions for hover color and scale effects */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* WhatsApp button hover state */
 .whatsapp-btn:hover {
+  /* Darker WhatsApp teal color when hovering */
   background-color: #128C7E;
+  /* Scale button up by 5% */
   transform: scale(1.05);
+  /* Enhanced drop shadow on hover */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-
-/* Gives each slide consistent full-width presence */
+/* ==========================================================================
+   Promotional Carousel Styles
+   ========================================================================== */
+/* Consistent slide container */
 .promo-slide {
+  /* Minimum slide height to prevent layout jump during transitions */
   min-height: 340px;
+  /* Slide fills full container width */
   width: 100%;
 }
 
-/* Adjust control arrows so they don't hug the screen edges too tightly */
+/* Adjust carousel previous navigation arrow */
 #carouselExampleContent .carousel-control-prev {
+  /* Move previous button inward from the left screen edge */
   left: 1.5rem;
+  /* Allow width to match the arrow icon size */
   width: auto;
 }
 
+/* Adjust carousel next navigation arrow */
 #carouselExampleContent .carousel-control-next {
+  /* Move next button inward from the right screen edge */
   right: 1.5rem;
+  /* Allow width to match the arrow icon size */
   width: auto;
 }
 
-/* ----------------------------------------------------------------------------- */
-/* Quienes somos */
+/* ==========================================================================
+   "Quiénes Somos" (About Us) Section
+   ========================================================================== */
+/* Section container */
 .quienes-somos {
+  /* Subtle transparent divider line at the bottom */
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  /* Section takes at least 80% of viewport height */
   min-height: 80vh;
+  /* Flexbox container */
   display: flex;
+  /* Vertically center content */
   align-items: center;
+  /* Diagonal gradient background from peach to lavender-blue */
   background: linear-gradient(135deg, #faebd3 0%, #4f52ee 100%);
 }
 
+/* Image inside "Quiénes Somos" */
 .quienes-somos-img {
+  /* Maximum height limit for the image */
   max-height: 420px;
+  /* Scale image to cover bounds while preserving aspect ratio */
   object-fit: cover;
+  /* Soft elevated drop shadow around the photo */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Fleet Cards Image Uniformity */
+/* ==========================================================================
+   Bicycle Fleet Cards
+   ========================================================================== */
+/* Uniform bicycle images on catalog cards */
 .card-img-top {
+  /* Fixed image height across all cards */
   height: 200px;
+  /* Keep entire bicycle visible without cropping or distortion */
   object-fit: contain;
+  /* Inner padding around the image using the small spacing token */
   padding: var(--space-sm);
+  /* Clean white background behind the image */
   background-color: #ffffff;
 }
 
+/* ==========================================================================
+   "Beneficios de Alquilar" (Rental Benefits) Section
+   ========================================================================== */
+/* Benefits section container */
 .beneficios-alquilar {
+  /* Ensure section takes at least 80% viewport height */
   min-height: 80vh;
+  /* Flexbox layout for centering */
   display: flex;
+  /* Vertically center section content */
   align-items: center;
+  /* Top and bottom padding of 40px */
   padding: 40px 0;
+  /* Diagonal gradient from deep blue to light lavender */
   background: linear-gradient(135deg, #0d458f 0%, #bdbefb 100%);
+  /* Ensure section stretches full width */
   width: 100%;
+  /* White text color for readability against the dark background */
   color: white;
 }
 
+/* Responsive adjustment for "Nuestros Servicios" on larger screens */
 @media (min-width: 992px) {
+  /* Target services section on desktop viewports */
   #nuestros-servicios {
+    /* Set minimum height to 40% of viewport height */
     min-height: 40vh;
+    /* Flexbox display */
     display: flex;
+    /* Center elements vertically */
     align-items: center;
   }
 }
+
+/* ==========================================================================
+   "Cómo Alquilar" (How To Rent) Section
+   ========================================================================== */
+/* How to rent section container (mobile-first) */
 .como-alquilar {
+  /* Automatic height on mobile to adapt to stacked content */
   min-height: auto;
+  /* Soft pastel gradient from light blue to pale violet */
   background: linear-gradient(135deg, #e9eff7 0%, #d6d7f7 100%);
 }
 
+/* Desktop styles for "Cómo Alquilar" */
 @media (min-width: 992px) {
+  /* Target container on desktop screens */
   .como-alquilar {
+    /* Set minimum height to 70% viewport on desktop */
     min-height: 70vh;
+    /* Flexbox layout */
     display: flex;
+    /* Center cards vertically on desktop */
     align-items: center;
   }
 }
 
-/* Subtle step card polish */
+/* Step card styling for rental instructions */
 .step-card {
+  /* Smooth transition for hover elevation and shadow */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Transparent top border placeholder to prevent layout shifts */
   border-top: 3px solid transparent;
 }
 
+/* Step card hover state */
 .step-card:hover {
+  /* Lift card 4px upwards on hover */
   transform: translateY(-4px);
+  /* Pronounced soft shadow on hover with high priority override */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+  /* Highlight top border with Bootstrap's primary color */
   border-top-color: var(--bs-primary);
 }
 
-/* Number badge */
+/* Numeric badge displayed on each rental step */
 .step-badge {
+  /* Inline flex container to center the step number */
   display: inline-flex;
+  /* Vertically center step number */
   align-items: center;
+  /* Horizontally center step number */
   justify-content: center;
+  /* Width of 38px */
   width: 38px;
+  /* Height of 38px */
   height: 38px;
+  /* Rounded badge corners */
   border-radius: 10px;
-  background-color: rgba(13, 110, 253, 0.1); /* Bootstrap primary tint */
+  /* Light blue background tint (10% opacity) */
+  background-color: rgba(13, 110, 253, 0.1);
+  /* Text color matching Bootstrap primary blue */
   color: var(--bs-primary);
+  /* Bold weight for clear number visibility */
   font-weight: 700;
+  /* Compact font size (approx 14.4px) */
   font-size: 0.9rem;
 }
 
+/* Utility class for wider letter spacing */
 .tracking-wide {
+  /* Add 0.08em space between characters */
   letter-spacing: 0.08em;
 }
 
-/* .como-alquilar {
+/* ==========================================================================
+   "Why Rueda Libre" Section
+   ========================================================================== */
+/* Section container */
+.why-rueda-libre {
+  /* Minimum height of 80% viewport height */
   min-height: 80vh;
+  /* Flexbox container */
   display: flex;
+  /* Center items vertically */
   align-items: center;
-  background: linear-gradient(135deg, #e9eff7 0%, #d6d7f7 100%);
-} */
-.why-rueda-libre{
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+  /* Diagonal gradient from deep royal blue to golden yellow */
   background: linear-gradient(135deg, #072ca6 0%, #fdebbf 100%);
 }
-/* ------------------------------------------------------------------------------- */
-/* Footer */
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+/* Main page footer */
 footer {
+  /* Footer background using the light color token */
   background-color: var(--color-light);
+  /* Text color using the dark color token */
   color: var(--color-dark);
+  /* Padding using the extra-large spacing token (40px) */
   padding: var(--space-xl);
+  /* Light gray top border divider line */
   border-top: 1px solid #ccc;
+  /* Flexbox container for column layout */
   display: flex;
+  /* Horizontally center footer columns */
   justify-content: center;
-  align-items: center; /* Vertically centers the text block against the map */
-  gap: var(--space-xl); /* Clean separation between the two columns */
+  /* Vertically center the contact text against the map iframe */
+  align-items: center;
+  /* Gap between footer text and Google map column */
+  gap: var(--space-xl);
+  /* Wrap columns on smaller screens */
   flex-wrap: wrap;
 }
 
+/* Contact information text container inside footer */
 .footer-content {
+  /* Flexbox container */
   display: flex;
+  /* Stack footer items vertically */
   flex-direction: column;
-  align-items: flex-start; /* Aligns all child elements to the left */
-  text-align: left; /* Left-aligns multi-line text */
-  max-width: 480px; /* Keeps text lines readable */
+  /* Align child items to the left */
+  align-items: flex-start;
+  /* Left-align text content */
+  text-align: left;
+  /* Maximum width limit to keep paragraphs readable */
+  max-width: 480px;
+  /* Inner padding using the small spacing token */
   padding: var(--space-sm);
 }
 
+/* "Encuéntranos" footer heading */
 #encuentranos {
+  /* Title font size (24px) */
   font-size: 1.5rem;
+  /* Bold font weight */
   font-weight: bold;
+  /* Dark text color */
   color: var(--color-dark);
+  /* Margin below heading using medium space token (16px) */
   margin-bottom: var(--space-md);
+  /* Center items alignment */
   align-items: center;
+  /* Center heading text */
   text-align: center;
 }
 
+/* Paragraphs within the footer info block */
 .footer-content p {
+  /* Vertical margin using small spacing token (8px) and 0 horizontally */
   margin: var(--space-sm) 0;
+  /* Comfortable line height for paragraph text */
   line-height: 1.5;
 }
 
-/* Cleanup for the map wrapper */
+/* Footer rightmost column containing the embedded map */
 footer > div:last-child {
-  text-align: right; /* Aligns the "Ver ubicación" link to the map edge */
+  /* Align location link to the right edge of the map */
+  text-align: right;
 }
 
+/* Embedded Google Maps iframe inside footer */
 footer iframe {
+  /* Remove default iframe border */
   border: 0;
+  /* Rounded corners on the map */
   border-radius: 8px;
+  /* Display as block to eliminate extra inline spacing */
   display: block;
+  /* Ensure map never overflows its container */
   max-width: 100%;
 }
-
-/* ----------------------------------------------------------------------------------- */

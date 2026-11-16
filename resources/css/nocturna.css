@@ -1,13 +1,21 @@
-/* 1. Invert the entire page and normalize colors */
+/* ==========================================================================
+   Dark Mode Styles (nocturna.css)
+   ========================================================================== */
+
+/* Target the root <html> element when the 'dark-mode' class is active */
 html.dark-mode {
+  /* Invert all colors and rotate hue 180deg to create an instant dark theme */
   filter: invert(1) hue-rotate(180deg);
-  background-color: #ffffff; /* Ensures the filter has a white base to turn black */
+  /* Ensure a solid white base so the filter inverts it into deep black */
+  background-color: #ffffff;
 }
 
-/* 2. Counter-invert media so images and videos look normal */
+/* Target images inside dark mode to prevent their colors from being inverted */
 html.dark-mode img,
+/* Target video elements inside dark mode */
 html.dark-mode video,
+/* Target picture wrapper elements inside dark mode */
 html.dark-mode picture {
+  /* Counter-invert media elements so photos and videos keep their natural colors */
   filter: invert(1) hue-rotate(180deg);
 }
-
