@@ -89,6 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   /* Heavy extra-bold weight for strong impact */
   font-weight: 800;
+  /* Think of clamp() as a size sandwich with a minimum, a preferred middle size, and a maximum: */
   /* Fluid font size scaling between 2.25rem and 3.6rem based on screen width */
   font-size: clamp(2.25rem, 5vw, 3.6rem);
   /* Compact line height tailored for large display titles */
@@ -249,6 +250,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Maximum height limit for the image */
   max-height: 420px;
   /* Scale image to cover bounds while preserving aspect ratio */
+  /* to fill its entire frame without getting stretched or squished */
   object-fit: cover;
   /* Soft elevated drop shadow around the photo */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -348,6 +350,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Numeric badge displayed on each rental step */
 .step-badge {
   /* Inline flex container to center the step number */
+  /* whenever you want a small, self-contained component to align its internal parts neatly without taking over the whole width of the page */
   display: inline-flex;
   /* Vertically center step number */
   align-items: center;
