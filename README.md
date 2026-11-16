@@ -39,30 +39,42 @@ Accede a las aplicaciones desplegadas en producción a través de los siguientes
 El proyecto adopta una arquitectura desacoplada por carpetas para aislar los contextos de negocio, frameworks y ciclos de vida de diseño:
 
 ```
-rueda-libre-bootstrap/
-├── index.html                   # Portal corporativo (Hero, carrusel, flota, beneficios, footer)
-├── tarifas.html                 # Matriz de precios por hora/día y paquetes de rutas guiadas
-├── reservas.html                # Formulario transaccional con validación en tiempo real y modal
-├── practice.html                # Sandbox de prototipado y pruebas de componentes
-├── bitacora.txt                 # Registro histórico de depuración y refactorización
-├── resources/                   # Recursos compartidos y activos estáticos
+rueda-libre/
+├── docs/
+│   └── screenshots/
+│       ├── dark_mode_preview.png
+│       ├── desktop_preview.png
+│       └── Screenshot 2026-11-08 at 12.58.09 P...  # [Nuevo archivo] Captura de pantalla adicional
+├── nocturna/
+│   ├── .gitignore                                 # [Nuevo archivo] Archivo de exclusión de Git
+│   ├── componentes.html
+│   ├── form.html
+│   └── prototipo.html
+├── resources/
 │   ├── css/
-│   │   ├── style.css            # Tokens :root, tipografía base y reglas personalizadas
-│   │   └── nocturna.css         # Lógica CSS para filtro e inversión de Dark Mode
-│   ├── js/
-│   │   └── functionality.js     # Validaciones de formulario, cálculo de fechas y modal accesible
+│   │   ├── nocturna.css
+│   │   └── style.css
 │   ├── icons/
-│   │   └── icon.png             # Isotipo y favicons de marca
-│   └── images/                  # Catálogo de flota (img1–img7), hero y fotografías corporativas
-├── nocturna/                    # Subdirectorio exclusivo para la campaña "Rueda Nocturna"
-│   ├── prototipo.html           # Landing page de campaña con Play CDN, Dark Mode y catálogo de rutas
-│   ├── form.html                # Formulario dedicado de registro nocturno
-│   └── componentes.html         # Catálogo de componentes atómicos (botones, tarjetas, badges)
-└── docs/
-    └── screenshots/             # Evidencias visuales de pruebas de maquetación y responsividad
-        ├── desktop_preview.png
-        ├── mobile_preview.png
-        └── dark_mode_preview.png
+│   │   └── icon.png
+│   ├── images/                                    # [Ampliación] Archivos detallados del catálogo
+│   │   ├── header.jpg
+│   │   ├── img1.png
+│   │   ├── img2.png
+│   │   ├── img3.jpeg
+│   │   ├── img4.png
+│   │   ├── img5.png
+│   │   ├── img6.png
+│   │   ├── img7.png
+│   │   └── quienes-somos.jpeg
+│   ├── js/
+│   │   └── functionality.js
+│   └── videos/                                    # [Nuevo directorio] Carpeta vacía o sin expandir
+├── bitacora.txt
+├── index.html
+├── practice.html
+├── README.md                                      # [Nuevo archivo] Documentación del proyecto
+├── reservas.html
+└── tarifas.html
 ```
 
 ### Relación entre Páginas y Flujos de Usuario
