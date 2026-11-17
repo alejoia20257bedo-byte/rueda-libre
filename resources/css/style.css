@@ -210,22 +210,54 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 340px;
   /* Slide fills full container width */
   width: 100%;
+  /* Safe horizontal padding on mobile to keep content clear of arrow buttons */
+  padding-left: 3.5rem !important;
+  padding-right: 3.5rem !important;
 }
 
 /* Adjust carousel previous navigation arrow */
 #carouselExampleContent .carousel-control-prev {
-  /* Move previous button inward from the left screen edge */
-  left: 1.5rem;
+  /* Position closer to the left edge on mobile to leave room for content */
+  left: 0.5rem;
   /* Allow width to match the arrow icon size */
   width: auto;
 }
 
 /* Adjust carousel next navigation arrow */
 #carouselExampleContent .carousel-control-next {
-  /* Move next button inward from the right screen edge */
-  right: 1.5rem;
+  /* Position closer to the right edge on mobile to leave room for content */
+  right: 0.5rem;
   /* Allow width to match the arrow icon size */
   width: auto;
+}
+
+/* Responsive adjustments for tablet and desktop viewports */
+@media (min-width: 768px) {
+  .promo-slide {
+    /* Restore standard desktop padding */
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+
+  /* Move arrows inward on larger screens for cleaner layout */
+  #carouselExampleContent .carousel-control-prev {
+    left: 1.5rem;
+  }
+
+  #carouselExampleContent .carousel-control-next {
+    right: 1.5rem;
+  }
+}
+
+/* Responsive typography for mobile screens */
+@media (max-width: 576px) {
+  .promo-slide h2 {
+    font-size: 1.75rem;
+  }
+
+  .promo-slide p {
+    font-size: 1.05rem !important;
+  }
 }
 
 /* ==========================================================================

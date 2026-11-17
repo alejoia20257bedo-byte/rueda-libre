@@ -33,10 +33,17 @@ B) index.html:
        texto oscuro (carousel-dark / text-body-secondary) directamente sobre
        el fondo degradado azul oscuro (#105191) de .hero-section, resultando
        ilegible por falta de contraste.
+     - En modo responsive (móviles), los botones de flecha de navegación
+       (.carousel-control-prev y .carousel-control-next) se superponían directamente
+       sobre el texto promocional debido a que tenían un desplazamiento fijo hacia
+       adentro (left: 1.5rem / right: 1.5rem) mientras que el contenedor tenía un
+       padding horizontal insuficiente (p-4 = 1.5rem).
      - Solución: Se asignaron contenedores con fondos sutiles nativos de
        Bootstrap (bg-primary-subtle, bg-success-subtle, bg-warning-subtle),
-       con padding consistente (p-5), bordes redondeados (rounded-4) y
-       sombra suave, garantizando contraste adecuado y transiciones suaves.
+       padding horizontal seguro en móvil (px-5 / 3.5rem) para garantizar una
+       zona despejada, ajuste de posición de flechas en móviles (left/right: 0.5rem
+       y 1.5rem en escritorio vía media queries), y ajuste de tipografía responsive
+       (fs-5 escalado a 1.05rem en pantallas pequeñas).
    * Bug 2 (Cuadrícula rígida en "¿Cómo alquilar?"):
      - Se utilizaba la clase fija "col-6" para las 4 tarjetas del proceso.
        En dispositivos móviles estrechos (<576px) esto reducía cada tarjeta
